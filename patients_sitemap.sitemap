@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="home.aspx" title="Home"  description="Home">
+    <siteMapNode url="patient_and_secretary_specific/appointments_for_patient.aspx" title="Schedule an Appointment" description="The patient/secretary can schedule/alter an appointment" />
+    <siteMapNode url="patient_and_secretary_specific/display_appointments.aspx" title="Display all Appointments" description="The patient/secretary can see all scheduled appointments" />
+
+    <siteMapNode url="patient_specific/contact_information.aspx" title="Change your Contact Information" description="The patient can alter his contact information" />
+    <siteMapNode url="patient_specific/patientfile.aspx" title="Inspect your Patientfile" description="The patient can inspect his patientfile" />
+
+  </siteMapNode>
+</siteMap>

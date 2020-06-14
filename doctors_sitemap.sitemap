@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="home.aspx" title="Home"  description="Home">
+      <siteMapNode url="doctor_specific/patient_proceedings.aspx" title="Make Changes to a Patientfile"  description="The doctor can alter a patient file" />
+      <siteMapNode url="secretary_and_doctor_specific/ordered_inventory.aspx" title="Order Inventory" description="The doctor/secretary can order Inventory/alter an Inventory status" />
+      <siteMapNode url="secretary_and_doctor_specific/statistics.aspx" title="See Revenue Statistics" description="The doctor/secretary can see statistics about the expected Revenue" />
+      <siteMapNode url="secretary_and_doctor_specific/statistics_two.aspx" title="See Most Visited Speakinghours" description="The doctor/secretary can see statistics about the speaking/visiting hours" />
+    </siteMapNode>
+</siteMap>

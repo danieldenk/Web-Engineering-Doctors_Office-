@@ -1,0 +1,133 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<%@ Register Assembly="System.Web.DataVisualization, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" Namespace="System.Web.UI.DataVisualization.Charting" TagPrefix="asp" %>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>EvilsOffice</title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body style="margin:0;padding:0;">
+    <form id="form1" runat="server">
+        <asp:SiteMapDataSource ID="AdminSiteMapDataSource" runat="server" SiteMapProvider="AdminSiteMap" />
+        <asp:SiteMapDataSource ID="DoctorSiteMapDataSource" runat="server" SiteMapProvider="DoctorSiteMap" />
+        <asp:SiteMapDataSource ID="PatientSiteMapDataSource" runat="server" SiteMapProvider="PatientSiteMap" />
+        <asp:SiteMapDataSource ID="SecretarySiteMapDataSource" runat="server" SiteMapProvider="SecretarySiteMap" />
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></asp:ToolkitScriptManager>
+
+        <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="home.aspx">EvilsOffice</a>
+            
+                <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+
+           <div>
+                <asp:LoginView ID="LoginView1" runat="server">
+                    <AnonymousTemplate>
+                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon">
+                                    <a style="margin-left:-150px;"href="login.aspx">Login</a>
+                                </span>
+                         </button>
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon">
+                                     <a style="margin-left:-150px;"><asp:LoginStatus ID="LoginStatus2" runat="server" LogoutPageUrl="home.aspx" LogoutAction="Redirect" /></a>
+                                </span>
+                         </button>
+                    </LoggedInTemplate> 
+                </asp:LoginView>
+            </div> 
+
+             
+
+
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                     <li class="nav-item active">
+                        <a class="nav-link" href="home.aspx">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="personal.aspx">Team</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pricing.aspx">Pricing</a>
+                    </li>
+                   <li class="nav-item">
+                        <a class="nav-link" href="location.aspx">Location</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="speakinghours.aspx">Speaking Hours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="jobs.aspx">Open Positions</a>
+                    </li>
+                 </ul>
+            </div>
+        </nav>
+        
+        <p style="margin-left:15px;margin-top:15px;">
+        
+             <asp:LoginView ID="LoginView4" runat="server">
+           
+                <AnonymousTemplate>
+                  <asp:SiteMapPath ID="SiteMapPath1" runat="server" PathSeparator=" / "></asp:SiteMapPath>
+                </AnonymousTemplate>
+
+                <RoleGroups>
+                   
+                  <asp:RoleGroup Roles="admin">
+                    <ContentTemplate>
+                      <asp:SiteMapPath ID="SiteMapPath1" runat="server" SiteMapProvider="AdminSiteMap" PathSeparator=" / " ></asp:SiteMapPath>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+
+                  <asp:RoleGroup Roles="doctor">
+                    <ContentTemplate>
+                      <asp:SiteMapPath ID="SiteMapPath1" runat="server" SiteMapProvider="DoctorSiteMap" PathSeparator=" / " ></asp:SiteMapPath>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+
+                  <asp:RoleGroup Roles="patient">
+                    <ContentTemplate>
+                      <asp:SiteMapPath ID="SiteMapPath1" runat="server" SiteMapProvider="PatientSiteMap" PathSeparator=" / "></asp:SiteMapPath>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+              
+                 <asp:RoleGroup Roles="secretary">
+                    <ContentTemplate>
+                      <asp:SiteMapPath ID="SiteMapPath1" runat="server" SiteMapProvider="SecretarySiteMap" PathSeparator=" / "></asp:SiteMapPath>
+                    </ContentTemplate>
+                  </asp:RoleGroup>
+                </RoleGroups>
+                
+              </asp:LoginView>
+      </p>
+
+
+    <div style="padding:20px;">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>
+       <footer class="footer">
+      <div class="container">
+        <span class="text-muted">EvilsOffice ©  -  All Rights Reserved</span>
+        <div>
+            <span>Follow us on:</span><br />
+            <img src="https://image.flaticon.com/icons/png/512/87/87390.png" style="width:25px;margin-left:0px;"/>
+            <img src="https://image.flaticon.com/icons/png/512/21/21155.png" style="width:25px;margin-left:5px;"/>
+            <img src="https://image.flaticon.com/icons/png/512/39/39379.png" style="width:25px;margin-left:5px;"/>
+        </div>
+      </div>
+    </footer>
+    </form>
+</body>
+</html>
